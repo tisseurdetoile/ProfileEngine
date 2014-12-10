@@ -6,12 +6,17 @@ package net.tisseurdetoile.profileEngine.specifications.hashmap;
 
 import java.util.HashMap;
 import net.tisseurdetoile.profileEngine.specifications.AbstractSpecification;
+import net.tisseurdetoile.profileEngine.specifications.DataType;
 
 /**
  *
  * @author 11646n
  */
 public class AttributeValueIn extends AbstractSpecification<HashMap<String,String>> {
+    public static final DataType TYPE = DataType.String;
+    public static final boolean MULTIVAL = false;
+    public static final String LIBELLE = "La valeur est :";
+
 
     private String paramName;
     private String paramValue;
