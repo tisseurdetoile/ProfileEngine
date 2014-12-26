@@ -7,16 +7,15 @@ package net.tisseurdetoile.profileEngine.specifications.hashmap;
 import java.util.HashMap;
 import net.tisseurdetoile.profileEngine.specifications.AbstractSpecification;
 import net.tisseurdetoile.profileEngine.specifications.DataType;
+import net.tisseurdetoile.profileEngine.specifications.SpecificationScope;
 
 /**
  *
  * @author 11646n
  */
-public class AttributeValueIn extends AbstractSpecification<HashMap<String,String>> {
-    public static final DataType TYPE = DataType.String;
-    public static final boolean MULTIVAL = false;
-    public static final String LIBELLE = "La valeur est :";
-
+public class AttributeValueIn extends AbstractSpecification<HashMap<String, String>> {
+    
+    public static final SpecificationScope SCOPE = new SpecificationScope(DataType.String, "La valeur est :");
 
     private String paramName;
     private String paramValue;
