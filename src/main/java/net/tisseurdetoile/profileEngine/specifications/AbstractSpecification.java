@@ -5,31 +5,31 @@
 package net.tisseurdetoile.profileEngine.specifications;
 
 /**
- *
+ * @param <E>
  * @author 11646n
  */
 public abstract class AbstractSpecification<E> implements ISpecification<E> {
 
     /**
-     * 
-     * @param candidate
-     * @return 
+     *
+     * @param candidate élément a verifier
+     * @return vrai si les condition sont satisfaite
      */
     @Override
     public abstract boolean isSatisfiedBy(E candidate);
 
     @Override
-    public ISpecification<E> or(ISpecification<E> otherSpecification) {
+    public final ISpecification<E> or(final ISpecification<E> otherSpecification) {
         return new OrSpecification<E>(this, otherSpecification);
     }
 
     @Override
-    public ISpecification<E> and(ISpecification<E> otherSpecification) {
+    public final ISpecification<E> and(final ISpecification<E> otherSpecification) {
         return new AndSpecification<E>(this, otherSpecification);
     }
 
     @Override
-    public ISpecification<E> not() {
+    public final ISpecification<E> not() {
         return new NotSpecification<E>(this);
     }
 }

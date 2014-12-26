@@ -13,15 +13,33 @@ import net.tisseurdetoile.profileEngine.specifications.hashmap.AttributeValueIn;
 public class AppTest
         extends TestCase {
 
-    ISpecification<HashMap<String, String>> sp11 = new AttributeValueIn("nom", "nomdetest");
-    ISpecification<HashMap<String, String>> sp12 = new AttributeValueIn("ville", "villedetest");
-    ISpecification<HashMap<String, String>> sp21 = new AttributeValueIn("nom", "nomdetest2");
-    ISpecification<HashMap<String, String>> sp22 = new AttributeValueIn("ville", "villedetest2");
-    ISpecification<HashMap<String, String>> sp1X = sp11.and(sp12);
-    ISpecification<HashMap<String, String>> sp2X = sp21.and(sp22);
-
     /**
-     * Create the test case
+     *
+     */
+    private final ISpecification<HashMap<String, String>> sp11 = new AttributeValueIn("nom", "nomdetest");
+    /**
+     *
+     */
+    private final ISpecification<HashMap<String, String>> sp12 = new AttributeValueIn("ville", "villedetest");
+    /**
+     *
+     */
+    private final ISpecification<HashMap<String, String>> sp21 = new AttributeValueIn("nom", "nomdetest2");
+    /**
+     *
+     */
+    private final ISpecification<HashMap<String, String>> sp22 = new AttributeValueIn("ville", "villedetest2");
+    /**
+     *
+     */
+    private final ISpecification<HashMap<String, String>> sp1X = sp11.and(sp12);
+    /**
+     *
+     */
+    private final ISpecification<HashMap<String, String>> sp2X = sp21.and(sp22);
+
+    /**.
+     * Create the test case:
      *
      * @param testName name of the test case
      */
@@ -56,7 +74,7 @@ public class AppTest
         return testData;
     }
 
-    /**
+    /**.
      * Rigourous Test :-)
      */
     public void testSP2U1() {
@@ -87,7 +105,7 @@ public class AppTest
 
     }
 
-    public void test2SP1U2() {
+    public final void test2SP1U2() {
         ISpecification<HashMap<String, String>> sptest = sp1X.or(sp21.and(sp22));
         assertEquals("sptest avec user2", true, sptest.isSatisfiedBy(getUser2()));
     }
