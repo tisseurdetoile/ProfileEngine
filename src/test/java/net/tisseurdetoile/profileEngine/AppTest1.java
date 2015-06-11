@@ -7,30 +7,43 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import net.tisseurdetoile.profileEngine.data.Candidate;
 import net.tisseurdetoile.profileEngine.specifications.ISpecification;
+import net.tisseurdetoile.profileEngine.engine.simple.SpecificationList;
 import net.tisseurdetoile.profileEngine.engine.simple.specification.AttributeValueIs;
 
 /**
  * Unit test for simple App.
  */
-public class AppTest
+public class AppTest1
         extends TestCase {
+
+    public SpecificationList specList = new SpecificationList();
 
     /**
      *
      */
-    private final ISpecification<Candidate> sp11 = new AttributeValueIs("nom", "nomdetest");
+    private final ISpecification<Candidate> sp11 = specList.addSpecification(new AttributeValueIs("nom", "nomdetest"));
     /**
      *
      */
-    private final ISpecification<Candidate> sp12 = new AttributeValueIs("ville", "villedetest");
+    private final ISpecification<Candidate> sp12 = specList.addSpecification(new AttributeValueIs("ville", "villedetest"));
     /**
      *
      */
-    private final ISpecification<Candidate> sp21 = new AttributeValueIs("nom", "nomdetest2");
+    private final ISpecification<Candidate> sp21 = specList.addSpecification(new AttributeValueIs("nom", "nomdetest2"));
     /**
      *
      */
-    private final ISpecification<Candidate> sp22 = new AttributeValueIs("ville", "villedetest2");
+    private final ISpecification<Candidate> sp22 = specList.addSpecification(new AttributeValueIs("ville", "villedetest2"));
+
+    /**
+     *
+     */
+    private final ISpecification<Candidate> sp31 = specList.addSpecification(new AttributeValueIs("nom", "nomdetest2"));
+    /**
+     *
+     */
+    private final ISpecification<Candidate> sp32 = specList.addSpecification(new AttributeValueIs("ville", "villedetest2"));
+
     /**
      *
      */
@@ -40,12 +53,15 @@ public class AppTest
      */
     private final ISpecification<Candidate> sp2X = sp21.and(sp22);
 
-    /**.
+    private final ISpecification<Candidate> sp3X = sp31.and(sp32);
+
+    /**
+     * .
      * Create the test case:
      *
      * @param testName name of the test case
      */
-    public AppTest(String testName) {
+    public AppTest1(String testName) {
         super(testName);
     }
 
@@ -53,38 +69,47 @@ public class AppTest
      * @return the suite of tests being tested
      */
     public static Test suite() {
-        return new TestSuite(AppTest.class);
+        return new TestSuite(AppTest1.class);
     }
 
     public Candidate getUser1() {
         Candidate testData = new Candidate();
 
-        Map<String, String> data = new HashMap<String,String>();
-        
+        Map<String, String> data = new HashMap<String, String>();
+
         data.put("nom", "nomdetest");
         data.put("prenom", "prenomdetest");
         data.put("ville", "villedetest");
 
         testData.putAll(data);
-        
+
         return testData;
     }
 
     public Candidate getUser2() {
         Candidate testData = new Candidate();
 
-                Map<String, String> data = new HashMap<String,String>();
-        
+        Map<String, String> data = new HashMap<String, String>();
+
         data.put("nom", "nomdetest2");
         data.put("prenom", "prenomdetest2");
         data.put("ville", "villedetest2");
-        
-testData.putAll(data);
-        
+
+        testData.putAll(data);
+
         return testData;
     }
 
-    /**.
+    /**
+     * .
+     * Rigourous Test :-)
+     */
+    public void testSPinit() {
+        System.out.println(String.format("Size %s", specList.size()));
+    }
+
+    /**
+     * .
      * Rigourous Test :-)
      */
     public void testSP2U1() {
@@ -130,4 +155,13 @@ testData.putAll(data);
         ISpecification<Candidate> sptest = sp11.and(sp12).or(sp21.and(sp22));
         assertEquals("sptest avec user2", true, sptest.isSatisfiedBy(getUser2()));
     }
+
+    public void test3SP2X() {
+        assertEquals("sptest avec user2", true, sp2X.isSatisfiedBy(getUser2()));
+    }
+
+    public void test3SP3X() {
+        assertEquals("sptest avec user2", true, sp3X.isSatisfiedBy(getUser2()));
+    }
+
 }

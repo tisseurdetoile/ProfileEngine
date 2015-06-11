@@ -2,26 +2,21 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.tisseurdetoile.profileEngine.specifications.hashmap;
+package net.tisseurdetoile.profileEngine.engine.simple.specification;
 
 import java.util.HashMap;
-import net.tisseurdetoile.profileEngine.specifications.AbstractSpecification;
-import net.tisseurdetoile.profileEngine.specifications.DataType;
-import net.tisseurdetoile.profileEngine.specifications.SpecificationScope;
+import net.tisseurdetoile.profileEngine.data.Candidate;
+import net.tisseurdetoile.profileEngine.engine.simple.AbstractHashSpecification;
+import net.tisseurdetoile.profileEngine.engine.simple.DataType;
 
 /**
  *
  * @author 11646n
  */
-public class AttributeExist extends AbstractSpecification<HashMap<String, String>> {
-    
-    public static final SpecificationScope SCOPE = new SpecificationScope(DataType.String, "L'attribut existe");
-
-    private String paramName;
-    private String paramValue;
-    private boolean nullIsEmpty;
+public class AttributeExist extends AbstractHashSpecification {
 
     public AttributeExist(String name, String value, boolean nullIsEmpty) {
+        this.type = DataType.None;
         this.paramName = name;
         this.paramValue = value;
         this.nullIsEmpty = nullIsEmpty;
@@ -36,8 +31,12 @@ public class AttributeExist extends AbstractSpecification<HashMap<String, String
 
     }
 
+    public AttributeExist(final String name) {
+        this(name, null);
+    }
+
     @Override
-    public boolean isSatisfiedBy(HashMap<String,String> candidate) {
+    public boolean isSatisfiedBy(Candidate candidate) {
         if (candidate != null) {
             if (candidate.containsKey(this.paramName)) {
                 return true;

@@ -12,7 +12,7 @@ public abstract class AbstractSpecification<E> implements ISpecification<E> {
 
     /**
      *
-     * @param candidate élément a verifier
+     * @param candidate ï¿½lï¿½ment a verifier
      * @return vrai si les condition sont satisfaite
      */
     @Override
@@ -32,4 +32,6 @@ public abstract class AbstractSpecification<E> implements ISpecification<E> {
     public final ISpecification<E> not() {
         return new NotSpecification<E>(this);
     }
+    
+    
 }

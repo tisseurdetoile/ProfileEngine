@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package net.tisseurdetoile.profileEngine.specifications;
+package net.tisseurdetoile.profileEngine.engine.simple;
 
 /**
  *
