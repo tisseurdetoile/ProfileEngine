@@ -1,20 +1,20 @@
-package net.tisseurdetoile.profileEngine;
+package net.tisseurdetoile.profileEngine.simple;
 
 import java.util.HashMap;
 import java.util.Map;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import net.tisseurdetoile.profileEngine.data.Candidate;
+import net.tisseurdetoile.profileEngine.data.ICandidate;
+import net.tisseurdetoile.profileEngine.engine.simple.Candidate;
 import net.tisseurdetoile.profileEngine.specifications.ISpecification;
 import net.tisseurdetoile.profileEngine.engine.simple.SpecificationList;
-import net.tisseurdetoile.profileEngine.engine.simple.SpecificationTreeBuilder;
 import net.tisseurdetoile.profileEngine.engine.simple.specification.AttributeValueIs;
 
 /**
  * Unit test for simple App.
  */
-public class AppTest2
+public class AppTest1
         extends TestCase {
 
     public SpecificationList specList = new SpecificationList();
@@ -22,51 +22,47 @@ public class AppTest2
     /**
      *
      */
-    private final ISpecification<Candidate> sp11 = specList.addSpecification(new AttributeValueIs("nom", "nomdetest"));
+    private final ISpecification<ICandidate> sp11 = specList.addSpecification(new AttributeValueIs("nom", "nomdetest"));
     /**
      *
      */
-    private final ISpecification<Candidate> sp12 = specList.addSpecification(new AttributeValueIs("ville", "villedetest"));
+    private final ISpecification<ICandidate> sp12 = specList.addSpecification(new AttributeValueIs("ville", "villedetest"));
     /**
      *
      */
-    private final ISpecification<Candidate> sp21 = specList.addSpecification(new AttributeValueIs("nom", "nomdetest2"));
+    private final ISpecification<ICandidate> sp21 = specList.addSpecification(new AttributeValueIs("nom", "nomdetest2"));
     /**
      *
      */
-    private final ISpecification<Candidate> sp22 = specList.addSpecification(new AttributeValueIs("ville", "villedetest2"));
+    private final ISpecification<ICandidate> sp22 = specList.addSpecification(new AttributeValueIs("ville", "villedetest2"));
 
     /**
      *
      */
-    private final ISpecification<Candidate> sp31 = specList.addSpecification(new AttributeValueIs("nom", "nomdetest2"));
+    private final ISpecification<ICandidate> sp31 = specList.addSpecification(new AttributeValueIs("nom", "nomdetest2"));
     /**
      *
      */
-    private final ISpecification<Candidate> sp32 = specList.addSpecification(new AttributeValueIs("ville", "villedetest2"));
+    private final ISpecification<ICandidate> sp32 = specList.addSpecification(new AttributeValueIs("ville", "villedetest2"));
 
     /**
      *
      */
-    private final ISpecification<Candidate> sp1X = sp11.and(sp12);
+    private final ISpecification<ICandidate> sp1X = sp11.and(sp12);
     /**
      *
      */
-    private final ISpecification<Candidate> sp2X = sp21.and(sp22);
+    private final ISpecification<ICandidate> sp2X = sp21.and(sp22);
 
-    private final ISpecification<Candidate> sp3X = sp31.and(sp32);
+    private final ISpecification<ICandidate> sp3X = sp31.and(sp32);
 
-    
-    SpecificationTreeBuilder stb = new SpecificationTreeBuilder(specList);
-    
-    
     /**
      * .
      * Create the test case:
      *
      * @param testName name of the test case
      */
-    public AppTest2(String testName) {
+    public AppTest1(String testName) {
         super(testName);
     }
 
@@ -74,11 +70,11 @@ public class AppTest2
      * @return the suite of tests being tested
      */
     public static Test suite() {
-        return new TestSuite(AppTest2.class);
+        return new TestSuite(AppTest1.class);
     }
 
-    public Candidate getUser1() {
-        Candidate testData = new Candidate();
+    public ICandidate getUser1() {
+
 
         Map<String, String> data = new HashMap<String, String>();
 
@@ -86,13 +82,13 @@ public class AppTest2
         data.put("prenom", "prenomdetest");
         data.put("ville", "villedetest");
 
-        testData.putAll(data);
 
+            ICandidate testData = new Candidate(data);
+        
         return testData;
     }
 
-    public Candidate getUser2() {
-        Candidate testData = new Candidate();
+    public ICandidate getUser2() {
 
         Map<String, String> data = new HashMap<String, String>();
 
@@ -100,7 +96,7 @@ public class AppTest2
         data.put("prenom", "prenomdetest2");
         data.put("ville", "villedetest2");
 
-        testData.putAll(data);
+            ICandidate testData = new Candidate(data);
 
         return testData;
     }
@@ -118,46 +114,46 @@ public class AppTest2
      * Rigourous Test :-)
      */
     public void testSP2U1() {
-        ISpecification<Candidate> sptest2 = sp11.and(sp12).or(sp21).and(sp22);
+        ISpecification<ICandidate> sptest2 = sp11.and(sp12).or(sp21).and(sp22);
         assertEquals("sptest2 avec user1", false, sptest2.isSatisfiedBy(getUser1()));
 
     }
 
     public void testSP2U2() {
-        ISpecification<Candidate> sptest2 = sp11.and(sp12).or(sp21).and(sp22);
+        ISpecification<ICandidate> sptest2 = sp11.and(sp12).or(sp21).and(sp22);
         assertEquals("sptest2 avec user2", true, sptest2.isSatisfiedBy(getUser2()));
     }
 
     public void testSP1U1() {
-        ISpecification<Candidate> sptest = sp1X.or(sp2X);
+        ISpecification<ICandidate> sptest = sp1X.or(sp2X);
         assertEquals("sptest avec user1", true, sptest.isSatisfiedBy(getUser1()));
 
     }
 
     public void testSP1U2() {
-        ISpecification<Candidate> sptest = sp1X.or(sp2X);
+        ISpecification<ICandidate> sptest = sp1X.or(sp2X);
         assertEquals("sptest avec user2", true, sptest.isSatisfiedBy(getUser2()));
     }
 
     public void test2SP1U1() {
-        ISpecification<Candidate> sptest = sp1X.or(sp21.and(sp22));
+        ISpecification<ICandidate> sptest = sp1X.or(sp21.and(sp22));
         assertEquals("sptest avec user1", true, sptest.isSatisfiedBy(getUser1()));
 
     }
 
     public final void test2SP1U2() {
-        ISpecification<Candidate> sptest = sp1X.or(sp21.and(sp22));
+        ISpecification<ICandidate> sptest = sp1X.or(sp21.and(sp22));
         assertEquals("sptest avec user2", true, sptest.isSatisfiedBy(getUser2()));
     }
 
     public void test3SP1U1() {
-        ISpecification<Candidate> sptest = sp11.and(sp12).or(sp21.and(sp22));
+        ISpecification<ICandidate> sptest = sp11.and(sp12).or(sp21.and(sp22));
         assertEquals("sptest avec user1", true, sptest.isSatisfiedBy(getUser1()));
 
     }
 
     public void test3SP1U2() {
-        ISpecification<Candidate> sptest = sp11.and(sp12).or(sp21.and(sp22));
+        ISpecification<ICandidate> sptest = sp11.and(sp12).or(sp21.and(sp22));
         assertEquals("sptest avec user2", true, sptest.isSatisfiedBy(getUser2()));
     }
 

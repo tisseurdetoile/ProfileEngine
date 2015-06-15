@@ -3,10 +3,8 @@
  * and open the template in the editor.
  */
 
-package net.tisseurdetoile.profileEngine.engine.simple;
+package net.tisseurdetoile.profileEngine.engine.simple.specification;
 
-import net.tisseurdetoile.profileEngine.engine.simple.specification.AttributeExist;
-import net.tisseurdetoile.profileEngine.engine.simple.specification.AttributeValueIs;
 import java.util.HashSet;
 import java.util.Set;
 

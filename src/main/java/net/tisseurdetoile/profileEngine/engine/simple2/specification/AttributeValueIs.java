@@ -2,12 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.tisseurdetoile.profileEngine.engine.simple.specification;
+package net.tisseurdetoile.profileEngine.engine.simple2.specification;
 
+import java.util.UUID;
+import net.tisseurdetoile.profileEngine.cache.ICache;
 import net.tisseurdetoile.profileEngine.data.ICandidate;
-import net.tisseurdetoile.profileEngine.engine.simple.AbstractHashSpecification;
 import net.tisseurdetoile.profileEngine.data.DataType;
 import net.tisseurdetoile.profileEngine.data.SpecificationScope;
+import net.tisseurdetoile.profileEngine.engine.simple2.AbstractHashSpecification;
 
 /**
  *
@@ -33,18 +35,33 @@ public class AttributeValueIs extends AbstractHashSpecification {
 
     @Override
     public boolean isSatisfiedBy(ICandidate candidate) {
+        boolean res = false;
+
+        ICache<UUID> cacheData = (ICache<UUID>) candidate;
+
+        if (cacheData.isInCache(this.uuid)) {
+            return cacheData.getInCache(this.uuid);
+        }
+
         if (candidate != null) {
             if (this.nullIsEmpty && this.paramValue == null) {
                 if (!candidate.containsKey(this.paramName) || (candidate.get(this.paramName) == null)) {
-                    return true;
+                    res = true;
+                    cacheData.addInCache(this.uuid, res);
+                    return res;
                 }
             }
 
             if (candidate.containsKey(this.paramName) && this.paramValue != null && this.paramValue.equalsIgnoreCase(candidate.get(this.paramName))) {
-                return true;
+                res = true;
+                cacheData.addInCache(this.uuid, res);
+                return res;
             }
 
         }
-        return false;
+
+        cacheData.addInCache(this.uuid, res);
+        return res;
     }
+
 }
