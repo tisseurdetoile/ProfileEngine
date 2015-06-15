@@ -16,7 +16,6 @@ import net.tisseurdetoile.profileEngine.data.DataType;
 public class AttributeExist extends AbstractHashSpecification {
 
     public AttributeExist(String name, String value, boolean nullIsEmpty) {
-        this.type = DataType.None;
         this.paramName = name;
         this.paramValue = value;
         this.nullIsEmpty = nullIsEmpty;

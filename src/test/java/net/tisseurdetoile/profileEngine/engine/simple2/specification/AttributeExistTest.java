@@ -27,9 +27,9 @@ import net.tisseurdetoile.profileEngine.engine.simple2.Candidate;
  *
  * @author TisseurDeToile
  */
-public class AttributeValueIsTest extends TestCase {
-
-    public AttributeValueIsTest(String testName) {
+public class AttributeExistTest extends TestCase {
+    
+    public AttributeExistTest(String testName) {
         super(testName);
     }
 
@@ -43,7 +43,7 @@ public class AttributeValueIsTest extends TestCase {
 
         testData.put(param, value);
 
-        AbstractHashSpecification spec = new AttributeValueIs(param, value);
+        AbstractHashSpecification spec = new AttributeExist(param);
 
         ICandidate candidate = new Candidate(testData);
 
@@ -52,29 +52,29 @@ public class AttributeValueIsTest extends TestCase {
     }
 
     public void testNotIsSatisfiedBy() {
-        System.out.println("testisNotSatisfiedBy");
+        System.out.println("testisSatisfiedBy");
 
         String param = "name";
         String value = "value";
-        String valueDiff = "valueDiff";
+        String paramDiff = "shortName";
 
         Map<String, String> testData = new HashMap<String, String>();
 
         testData.put(param, value);
 
-        AbstractHashSpecification spec = new AttributeValueIs(param, valueDiff);
+        AbstractHashSpecification spec = new AttributeExist(paramDiff);
 
         ICandidate candidate = new Candidate(testData);
 
         assertFalse(spec.isSatisfiedBy(candidate));
 
     }
-
-    public void testEquals() {
+    
+        public void testEquals() {
         System.out.println("testEquals");
 
-        AbstractHashSpecification spec = new AttributeValueIs("nom", "nomdetest");
-        AbstractHashSpecification spec2 = new AttributeValueIs("nom", "nomdetest");
+        AbstractHashSpecification spec = new AttributeExist("nom");
+        AbstractHashSpecification spec2 = new AttributeExist("nom");
 
         assertTrue(spec.equals(spec2));
     }

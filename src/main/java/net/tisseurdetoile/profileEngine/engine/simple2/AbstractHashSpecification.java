@@ -7,7 +7,6 @@ package net.tisseurdetoile.profileEngine.engine.simple2;
 import net.tisseurdetoile.profileEngine.data.DataType;
 import java.util.List;
 import java.util.UUID;
-import java.util.logging.Logger;
 import net.tisseurdetoile.profileEngine.data.ICandidate;
 import net.tisseurdetoile.profileEngine.specifications.*;
 
@@ -33,6 +32,10 @@ public abstract class AbstractHashSpecification extends AbstractSpecification<IC
 
     public boolean equals(AbstractHashSpecification spec) {
 
+        if(!this.getClass().getName().equals(spec.getClass().getName())) {
+            return false;
+        }
+        
         if (!this.type.equals(spec.type)) {
             return false;
         }

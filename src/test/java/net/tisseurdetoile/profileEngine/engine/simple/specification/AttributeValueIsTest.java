@@ -14,21 +14,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package net.tisseurdetoile.profileEngine.engine.simple2.specification;
+package net.tisseurdetoile.profileEngine.engine.simple.specification;
 
 import java.util.HashMap;
 import java.util.Map;
 import junit.framework.TestCase;
 import net.tisseurdetoile.profileEngine.data.ICandidate;
-import net.tisseurdetoile.profileEngine.engine.simple2.AbstractHashSpecification;
-import net.tisseurdetoile.profileEngine.engine.simple2.Candidate;
+import net.tisseurdetoile.profileEngine.engine.simple.AbstractHashSpecification;
+import net.tisseurdetoile.profileEngine.engine.simple.Candidate;
 
 /**
  *
  * @author TisseurDeToile
  */
 public class AttributeValueIsTest extends TestCase {
-
+    
     public AttributeValueIsTest(String testName) {
         super(testName);
     }
@@ -52,7 +52,7 @@ public class AttributeValueIsTest extends TestCase {
     }
 
     public void testNotIsSatisfiedBy() {
-        System.out.println("testisNotSatisfiedBy");
+        System.out.println("testisSatisfiedBy");
 
         String param = "name";
         String value = "value";
@@ -68,15 +68,5 @@ public class AttributeValueIsTest extends TestCase {
 
         assertFalse(spec.isSatisfiedBy(candidate));
 
-    }
-
-    public void testEquals() {
-        System.out.println("testEquals");
-
-        AbstractHashSpecification spec = new AttributeValueIs("nom", "nomdetest");
-        AbstractHashSpecification spec2 = new AttributeValueIs("nom", "nomdetest");
-
-        assertTrue(spec.equals(spec2));
-    }
-
+    }    
 }

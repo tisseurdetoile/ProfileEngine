@@ -14,22 +14,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package net.tisseurdetoile.profileEngine.engine.simple2.specification;
+package net.tisseurdetoile.profileEngine.engine.simple.specification;
 
 import java.util.HashMap;
 import java.util.Map;
 import junit.framework.TestCase;
 import net.tisseurdetoile.profileEngine.data.ICandidate;
-import net.tisseurdetoile.profileEngine.engine.simple2.AbstractHashSpecification;
-import net.tisseurdetoile.profileEngine.engine.simple2.Candidate;
+import net.tisseurdetoile.profileEngine.engine.simple.AbstractHashSpecification;
+import net.tisseurdetoile.profileEngine.engine.simple.Candidate;
 
 /**
  *
  * @author TisseurDeToile
  */
-public class AttributeValueIsTest extends TestCase {
-
-    public AttributeValueIsTest(String testName) {
+public class AttributeExistTest extends TestCase {
+    
+    public AttributeExistTest(String testName) {
         super(testName);
     }
 
@@ -43,7 +43,7 @@ public class AttributeValueIsTest extends TestCase {
 
         testData.put(param, value);
 
-        AbstractHashSpecification spec = new AttributeValueIs(param, value);
+        AbstractHashSpecification spec = new AttributeExist(param);
 
         ICandidate candidate = new Candidate(testData);
 
@@ -56,27 +56,17 @@ public class AttributeValueIsTest extends TestCase {
 
         String param = "name";
         String value = "value";
-        String valueDiff = "valueDiff";
+        String paramDiff = "shortName";
 
         Map<String, String> testData = new HashMap<String, String>();
 
         testData.put(param, value);
 
-        AbstractHashSpecification spec = new AttributeValueIs(param, valueDiff);
+        AbstractHashSpecification spec = new AttributeExist(paramDiff);
 
         ICandidate candidate = new Candidate(testData);
 
         assertFalse(spec.isSatisfiedBy(candidate));
 
-    }
-
-    public void testEquals() {
-        System.out.println("testEquals");
-
-        AbstractHashSpecification spec = new AttributeValueIs("nom", "nomdetest");
-        AbstractHashSpecification spec2 = new AttributeValueIs("nom", "nomdetest");
-
-        assertTrue(spec.equals(spec2));
-    }
-
+    }   
 }

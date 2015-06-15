@@ -6,8 +6,6 @@ package net.tisseurdetoile.profileEngine.engine.simple.specification;
 
 import net.tisseurdetoile.profileEngine.data.ICandidate;
 import net.tisseurdetoile.profileEngine.engine.simple.AbstractHashSpecification;
-import net.tisseurdetoile.profileEngine.data.DataType;
-import net.tisseurdetoile.profileEngine.data.SpecificationScope;
 
 /**
  *
@@ -15,11 +13,7 @@ import net.tisseurdetoile.profileEngine.data.SpecificationScope;
  */
 public class AttributeValueIs extends AbstractHashSpecification {
 
-    public static final SpecificationScope SCOPE = new SpecificationScope(DataType.String, "La valeur est :");
-
     public AttributeValueIs(String paramName, String ParamValue, boolean nullIsEmpty) {
-        this.type = DataType.String;
-
         this.paramName = paramName;
         this.paramValue = ParamValue;
         this.nullIsEmpty = nullIsEmpty;

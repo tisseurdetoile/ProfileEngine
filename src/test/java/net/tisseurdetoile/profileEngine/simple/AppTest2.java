@@ -8,7 +8,6 @@ import junit.framework.TestSuite;
 import net.tisseurdetoile.profileEngine.data.ICandidate;
 import net.tisseurdetoile.profileEngine.engine.simple.Candidate;
 import net.tisseurdetoile.profileEngine.specifications.ISpecification;
-import net.tisseurdetoile.profileEngine.engine.simple.SpecificationList;
 import net.tisseurdetoile.profileEngine.engine.simple.specification.AttributeValueIs;
 
 /**
@@ -17,33 +16,31 @@ import net.tisseurdetoile.profileEngine.engine.simple.specification.AttributeVal
 public class AppTest2
         extends TestCase {
 
-    public SpecificationList specList = new SpecificationList();
+    /**
+     *
+     */
+    private final ISpecification<ICandidate> sp11 = new AttributeValueIs("nom", "nomdetest");
+    /**
+     *
+     */
+    private final ISpecification<ICandidate> sp12 = new AttributeValueIs("ville", "villedetest");
+    /**
+     *
+     */
+    private final ISpecification<ICandidate> sp21 = new AttributeValueIs("nom", "nomdetest2");
+    /**
+     *
+     */
+    private final ISpecification<ICandidate> sp22 = new AttributeValueIs("ville", "villedetest2");
 
     /**
      *
      */
-    private final ISpecification<ICandidate> sp11 = specList.addSpecification(new AttributeValueIs("nom", "nomdetest"));
+    private final ISpecification<ICandidate> sp31 = new AttributeValueIs("nom", "nomdetest2");
     /**
      *
      */
-    private final ISpecification<ICandidate> sp12 = specList.addSpecification(new AttributeValueIs("ville", "villedetest"));
-    /**
-     *
-     */
-    private final ISpecification<ICandidate> sp21 = specList.addSpecification(new AttributeValueIs("nom", "nomdetest2"));
-    /**
-     *
-     */
-    private final ISpecification<ICandidate> sp22 = specList.addSpecification(new AttributeValueIs("ville", "villedetest2"));
-
-    /**
-     *
-     */
-    private final ISpecification<ICandidate> sp31 = specList.addSpecification(new AttributeValueIs("nom", "nomdetest2"));
-    /**
-     *
-     */
-    private final ISpecification<ICandidate> sp32 = specList.addSpecification(new AttributeValueIs("ville", "villedetest2"));
+    private final ISpecification<ICandidate> sp32 = new AttributeValueIs("ville", "villedetest2");
 
     /**
      *
@@ -97,14 +94,6 @@ public class AppTest2
         ICandidate testData = new Candidate(data);
 
         return testData;
-    }
-
-    /**
-     * .
-     * Rigourous Test :-)
-     */
-    public void testSPinit() {
-        System.out.println(String.format("Size %s", specList.size()));
     }
 
     /**
