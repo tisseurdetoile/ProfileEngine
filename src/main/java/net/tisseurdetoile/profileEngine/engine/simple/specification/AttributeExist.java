@@ -18,7 +18,7 @@ public class AttributeExist extends AbstractHashSpecification {
     public AttributeExist(String name, String value, boolean nullIsEmpty) {
         this.paramName = name;
         this.paramValue = value;
-        this.nullIsEmpty = nullIsEmpty;
+        this.nullIsEmptyOrZero = nullIsEmpty;
     }
 
     /**

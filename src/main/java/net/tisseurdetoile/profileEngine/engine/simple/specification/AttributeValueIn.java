@@ -4,6 +4,7 @@
  */
 package net.tisseurdetoile.profileEngine.engine.simple.specification;
 
+import java.util.ArrayList;
 import net.tisseurdetoile.profileEngine.data.ICandidate;
 import net.tisseurdetoile.profileEngine.engine.simple.AbstractHashSpecification;
 
@@ -11,16 +12,20 @@ import net.tisseurdetoile.profileEngine.engine.simple.AbstractHashSpecification;
  *
  * @author 11646n
  */
-public class AttributeValueIs extends AbstractHashSpecification {
+public class AttributeValueIn extends AbstractHashSpecification {
 
-    public AttributeValueIs(String paramName, String ParamValue, boolean nullIsEmpty) {
+    
+    
+    
+    public AttributeValueIn(String paramName, String ParamValue, boolean nullIsEmpty) {
+        this.paramValues = new ArrayList<String>();
+        
         this.paramName = paramName;
-        this.paramValue = ParamValue;
+        this.paramValues.add(ParamValue);
         this.nullIsEmptyOrZero = nullIsEmpty;
-
     }
 
-    public AttributeValueIs(String paramName, String ParamValue) {
+    public AttributeValueIn(String paramName, String ParamValue) {
         this(paramName, ParamValue, false);
 
     }

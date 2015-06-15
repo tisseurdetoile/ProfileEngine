@@ -4,7 +4,6 @@
  */
 package net.tisseurdetoile.profileEngine.engine.simple;
 
-import net.tisseurdetoile.profileEngine.data.DataType;
 import java.util.List;
 import net.tisseurdetoile.profileEngine.data.ICandidate;
 import net.tisseurdetoile.profileEngine.specifications.*;
@@ -17,7 +16,7 @@ public abstract class AbstractHashSpecification extends AbstractSpecification<IC
     protected String paramName;
     protected String paramValue;
     protected List<String> paramValues;
-    protected boolean nullIsEmpty;
+    protected boolean nullIsEmptyOrZero;
 
     public AbstractHashSpecification() {
     }    

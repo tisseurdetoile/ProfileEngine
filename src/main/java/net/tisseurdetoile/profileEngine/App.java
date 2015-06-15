@@ -1,23 +1,27 @@
 package net.tisseurdetoile.profileEngine;
 
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 
 /**
  * Hello world!
  *
  */
-public class App 
-{
-    ArrayList<String> test = new ArrayList<String>();
-    public static void main( String[] args )
-    {
+public class App {
 
-        
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        System.out.println("Hello World!");
 
-        System.out.println( "Hello World!" );
-        /**
-         * "[IsValorisedAttribute:codeEmploi].AND[IsAttributeValueIn:codeEmploi:00182].OR[IsAttributeValueIn:codeEmploi:00183]"
-         * public static final String regExp = "(\\[([^]]+)\\](.(AND|OR|NOT)){0,1})";
-         */
+        Reader in = new FileReader("./data/Teams.csv");
+        Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
+
+        for (CSVRecord record : records) {
+            System.out.println(record.toString());
+        }
+
     }
 }
