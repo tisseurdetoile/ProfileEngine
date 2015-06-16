@@ -1,0 +1,33 @@
+Etablissement
+Ville
+Code Etablissement
+Commune
+Secteur Public=1 Prive=2
+Effectif Presents Production
+Effectif Presents Services
+Effectif Presents Total secteurs
+Taux Brut de Reussite Production
+Taux Brut de Reussite Services
+Taux Brut de Reussite Total secteurs
+Taux Reussite Attendu/Acad Production
+Taux Reussite Attendu/Acad Services
+Taux Reussite Attendu/Acad Total secteurs
+Taux Reussite Attendu/France Production
+Taux Reussite Attendu/France Services
+Taux Reussite Attendu/France Total secteurs
+%Bachel/sort. 2de+1re+Term. Etab.
+%Bachel/sort. Terminales Etab.
+%Bachel/sort. 2de+1re+Term. Acad.
+%Bachel/sort. Terminales Acad.
+%Bachel/sort. 2de+1re+Term. France
+%Bachel/sort. Terminales France
+Effectif de seconde
+Effectif de premiere
+Taux acces Brut seconde-BAC
+Taux acces Attendu/Acad seconde-BAC
+Taux acces Attendu/France seconde-BAC
+Taux acces Brut premiere-BAC
+Taux acces Attendu/Acad premiere-BAC
+Taux acces Attendu/France premiere-BAC
+Academie
+Departement

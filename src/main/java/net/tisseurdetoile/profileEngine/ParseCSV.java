@@ -14,7 +14,7 @@ import org.apache.commons.csv.CSVRecord;
  * Hello world!
  *
  */
-public class App {
+public class ParseCSV {
 
     private static final Logger LOG = Logger.getLogger("App");
 
@@ -23,9 +23,9 @@ public class App {
         Monitor monParse = MonitorFactory.start("parse");
 
         System.out.println("Hello World!");
-
-        Reader in = new FileReader("./data/Teams.csv");
-        Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
+        
+        Reader in = new FileReader("./data/data.csv");
+        Iterable<CSVRecord> records = CSVFormat.DEFAULT.withDelimiter(';').withHeader().parse(in);
 
         for (CSVRecord record : records) {
             monParse.start();
