@@ -29,4 +29,28 @@ public class OrSpecification<E> extends AbstractSpecification<E> {
         return result;
     }
 
+        @Override
+    public String serialise() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("OR");
+        sb.append("(");
+        int ni = 0;
+
+        for (ISpecification<E> iSpecification : specifications) {
+            if (ni > 0) {
+                sb.append(",");
+            }
+
+            sb.append(iSpecification.serialise());
+
+            ni++;
+        }
+
+        sb.append(")");
+
+        return sb.toString();
+
+    }
+    
 }

@@ -22,4 +22,15 @@ public class NotSpecification<E> extends AbstractSpecification<E> {
         return !specification.isSatisfiedBy(candidate);
     }
 
+        @Override
+    public String serialise() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(specification.serialise());
+        sb.append(".NOT");
+
+        return sb.toString();
+
+    }
+    
 }

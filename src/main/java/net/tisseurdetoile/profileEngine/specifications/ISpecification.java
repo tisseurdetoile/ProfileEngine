@@ -10,6 +10,8 @@ package net.tisseurdetoile.profileEngine.specifications;
  */
 public interface ISpecification<E> {
 
+    public String serialise();
+    
     public boolean isSatisfiedBy(E candidate);
 
     public ISpecification<E> or(ISpecification<E> specification);

@@ -14,7 +14,7 @@ import net.tisseurdetoile.profileEngine.specifications.*;
  * @author 11646n
  */
 public abstract class AbstractHashSpecification extends AbstractSpecification<ICandidate> {
-    
+
     protected DataType type;
     protected String paramName;
     protected String paramValue;
@@ -32,10 +32,10 @@ public abstract class AbstractHashSpecification extends AbstractSpecification<IC
 
     public boolean equals(AbstractHashSpecification spec) {
 
-        if(!this.getClass().getName().equals(spec.getClass().getName())) {
+        if (!this.getClass().getName().equals(spec.getClass().getName())) {
             return false;
         }
-        
+
         if (!this.type.equals(spec.type)) {
             return false;
         }
@@ -57,5 +57,28 @@ public abstract class AbstractHashSpecification extends AbstractSpecification<IC
         }
 
         return true;
+    }
+
+    @Override
+    public String serialise() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("[");
+        sb.append(this.getClass().getSimpleName());
+        sb.append(":");
+        sb.append(this.paramName);
+        sb.append(":");
+
+        if (this.paramValue != null) {
+            sb.append(this.paramValue);
+        }
+
+        if (this.paramValues != null) {
+            sb.append(this.paramValues);
+        }
+
+        sb.append("]");
+
+        return sb.toString();
     }
 }

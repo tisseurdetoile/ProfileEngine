@@ -19,6 +19,9 @@ public abstract class AbstractSpecification<E> implements ISpecification<E> {
     public abstract boolean isSatisfiedBy(E candidate);
 
     @Override
+    public abstract String serialise();
+    
+    @Override
     public final ISpecification<E> or(final ISpecification<E> otherSpecification) {
         return new OrSpecification<E>(this, otherSpecification);
     }
